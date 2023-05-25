@@ -1,0 +1,39 @@
+.iconos{
+    text-align: center;
+}
+
+.logo{
+    height: 50px;
+}
+body {
+    background-color: #EDF2F4;
+    padding-top: 70px; 
+}
+
+.cabecera{
+    background: rgb(238,241,100);
+    text-align: center;
+    background: linear-gradient(90deg, rgba(238,241,100,0.989233193277311) 0%, rgba(255,48,104,1) 50%, rgba(255,0,52,1) 100%);
+}
+
+.relleno{
+    background-color:rgba(255, 255, 255, 0.6); 
+    border-radius: 13px;
+    text-align: center;
+    font-size: 30px;
+    padding: 7px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+body{
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+}

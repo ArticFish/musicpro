@@ -1,0 +1,119 @@
+{%load static%}
+
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio sesion</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static 'css/login.css' %}">
+    <style>
+    @media screen and (max-width: 600px) {
+        .navbar .search-container {
+        float: none;
+    }
+    .topnav a, .topnav input[type=text], .topnav .search-container button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+    .topnav input[type=text] {
+        border: 1px solid #ccc;  
+    }
+    }
+    </style>
+</head>
+
+<header class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top cabecera">
+        <div class="col-md-1">
+            <a href="{% url 'index' %}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg></a>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-1">
+            <img src="{%static 'img/logo.png' %}" class="img-fluid logo">
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-1"></div>
+    </nav>
+</header>
+<body class="container-fluid"> 
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 m-10 center">
+            <form class="relleno mt-10" id="form2" method="post" action="{% url 'iniciarsesion' %}">
+                {% csrf_token %}
+                <div class="row ">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8">
+                            <h1>Inicio de sesion</h1>
+                        </div>
+                        <div class="col-sm-2 "></div>
+                </div>  
+                <div class="row">
+                    <div class="col-md-4"><label><h6>Nombre usuario:</h6></label></div>
+                    <div class="col-md-6">
+                        <div class="form-group" style="margin-top: 5px;">
+                            <input type="text" class="form-control" id="iniciousuario" name="username"required>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"><label><h6>Contraseña:</h6></label></div>
+                    <div class="col-md-6">
+                        <div class="form-group" style="margin-top: 5px;">
+                        <input type="password" class="form-control" id="iniciocontra" name="contra" required>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary" style="margin-top: 5px;">Iniciar sesion</button>
+                        {% if messages %}
+                            {% for message in messages %}
+                                <h6><p id="mensajes">{{ message }}</p></h6>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="my-3">
+                            <span>
+                                <h6>¿Usuario nuevo?</h6>
+                                <a href="{% url 'registro' %}"><h6> Registrate</h6></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <span>
+                            <h6>¿Ha olvidado su contraseña??</h6>
+                            <a href=""><h6> Recuperar Contraseña</h6></a>
+                        </span>
+                    </div>
+                </div>
+                </div>
+            </form>
+        </div>
+            <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+            <!-- Include all compiled plugins (below), or include individual files as needed -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+.cabecera{
+    background: rgb(238,241,100);
+    text-align: center;
+    background: linear-gradient(90deg, rgba(238,241,100,0.989233193277311) 0%, rgba(255,48,104,1) 50%, rgba(255,0,52,1) 100%);
+}
+
+.iconos{
+    text-align: center;
+}
+
+.logo{
+    height: 50px;
+}
+
+.relleno{
+    background-color:rgba(255, 255, 255, 0.6); 
+    border-radius: 13px;
+    text-align: center;
+    font-size: 30px;
+    padding: 7px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-top: 5%;
+}
+
+.producto{
+    height: 150px;
+}
+.filas{
+    text-align: center;
+    margin-top: 10%;
+}
+.columnas{
+    text-align: center;
+    margin-top: 5%;
+}
+h2{
+    color:red;
+}
+body {
+    background-color: #EDF2F4;
+}
+.myButton {
+	background-color:#ff0000;
+	border-radius:28px;
+	border:1px solid #ff0000;
+	display:inline-block;
+	cursor:pointer;
+	color:white;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #000000;
+}
+.myButton:hover {
+	background-color:#ffffff;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
