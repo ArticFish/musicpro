@@ -38,7 +38,7 @@
 <header class="container-fluid">
     <nav class="navbar navbar-default navbar-fixed-top cabecera">
         <div class="col-md-1">
-            <a href="{% url 'login' %}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <a href="{% url 'iniciar' %}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-arrow-left" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
             </svg></a>
         </div>
@@ -54,7 +54,7 @@
     <div class="row">
         <div class="col-md-4 " ></div>
         <div class="col-md-4 m-10 center">
-            <form class="relleno" method="post" name="formulario" id="form1" action="{% url 'registro' %}">
+            <form class="relleno" method="post" name="formulario" id="form1" action="{% url 'registrar' %}">
                 {% csrf_token %}
                 <fieldset>
                 <div class="row ">
@@ -98,9 +98,9 @@
                 </div>
                 <button type="submit" class="btn btn-primary" style="margin-top: 5px;">Registrarse</button>
                 {% if messages %}
-                {% for message in messages %}
-                    <h6><p id="mensajes">{{ message }}</p></h6>
-                {% endfor %}
+                    {% for message in messages %}
+                        <h6><p id="mensajes">{{ message }}</p></h6>
+                    {% endfor %}
                 {% endif %}
                     <h6><p id="mensajes"></p></h6>
                 </fieldset> 

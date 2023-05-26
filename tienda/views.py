@@ -10,10 +10,12 @@ def index(request):
 def registro(request):
     return render(request,'registro.html')
 
-def login(request):
-    return render(request,'login.html')
+def iniciar(request):
+    return render(request,'iniciar.html')
 
-
+def producto(request):
+    return render(request,'plantillaProducto.html')
+    
 def cerrarsesion(request):
     logout(request)
     return render(request,'index.html')
@@ -39,7 +41,7 @@ def registrar(request):
         user = User.objects.create_user(nombre, correo, clave)
         user.save()
         print('Funciono correctamente')
-        return render(request,'prueba.html')
+        return render(request,'iniciar.html')
     except:
         print('Dio un error')
-        return render(request,'registrarse.html')
+        return render(request,'registro.html')
