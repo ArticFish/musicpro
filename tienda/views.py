@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from .models import producto
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 # Create your views here.
 def index(request):
-    return render(request,'index.html')
+    lproductos = producto.objects.all()
+    contexto = {"lista":lproductos}
+    return render(request,'index.html',contexto)
 
 def registro(request):
     return render(request,'registro.html')
@@ -13,8 +16,10 @@ def registro(request):
 def iniciar(request):
     return render(request,'iniciar.html')
 
-def producto(request):
-    return render(request,'plantillaProducto.html')
+def pproducto(request,idp):
+    lproductos = producto.objects.get(idProducto=idp)
+    contexto = {"lista":lproductos}
+    return render(request,'pproducto.html',contexto)
     
 def cerrarsesion(request):
     logout(request)
