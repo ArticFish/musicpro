@@ -63,6 +63,7 @@ body {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
 .myButton:hover {
 	background-color:#ffffff;
 }
