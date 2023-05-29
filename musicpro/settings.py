@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_8+lg7225w1pmiaw^ib3sb#^y0x*k34$)v$v4c)9ji$pvefn^g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tienda',
+    'guest_user',
 ]
 
 MIDDLEWARE = [
@@ -106,8 +107,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
+AUTHENTICATION_BACKENDS = [
+   "django.contrib.auth.backends.ModelBackend",
+   # it should be the last entry to prevent unauthorized access
+   "guest_user.backends.GuestBackend",
+]
+LOGIN_URL = '/iniciar'
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -118,7 +123,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
