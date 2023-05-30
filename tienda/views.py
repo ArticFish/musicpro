@@ -48,7 +48,7 @@ def agregarcarrito(request,idp,idu):
     pro.idProducto = producto.objects.get(idProducto=idp)
     usuario.id = User.objects.get(id=idu)
     carrito.objects.create(idProducto=pro.idProducto,idUsuario=usuario.id)
-    return render(request,'carritocompra.html')
+    return render(request,'index.html')
 
 def iniciarsesion(request):
     user = request.POST['username']

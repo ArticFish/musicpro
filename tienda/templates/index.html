@@ -37,12 +37,25 @@
                 <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
             </svg>
         </div>
-        <div class="col-sm-4"></div>
         <div class="col-sm-1">
             <img src="{%static 'img/logo.png' %}" class="img-fluid logo">
         </div>
-        <div class="col-sm-4"></div>
+        <div class="col-sm-4"> 
+            <div class="search-container">
+                <form action="">
+                    <input type="text" placeholder="Buscar..." name="search" size="40">
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
         <div class="col-sm-1">
+            <a href="{% url 'carritocompra'  user.id %}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-cart3" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+            </a>
+        </svg></div>
+        <div class="col-sm-1">
+            
             {% if user|is_guest_user %}
             <a href="{% url 'iniciar' %}" class="acolor"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-person-circle" viewBox="0 0 16 16" >
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -65,37 +78,16 @@
     </nav>
 </header>
 <body class="container-sm">
-    <div class="row filas">
-        <h1>Productos en oferta</h1>
-    </div>
-    <div class="row filas">
-        <div class="col-md-4">
-            {{ user.username }}
-            {{ user.id }}
-            <a href="{% url 'registro' %}">Sign up and save your work!</a>
-            {% if user.is_authenticated %}
-                <a href="{% url 'carritocompra'  user.id %}">carrito</a>
-            {% endif %}
-        </div>
-        <div class="col-md-4">
-            <div class="search-container">
-                <form action="">
-                    <input type="text" placeholder="Dirección..." name="search" size="40">
-                    <button type="submit">Buscar</button>
-                </form>
-            </div>
-        </div>
-        <div class="col-md-4"></div>
-    </div>
     <div class="relleno margen" >
         <div class="row">
+            <h1>Productos en oferta</h1>
             {% for m in lista %}
-                <div class="col-sm-4 columnas">
-                    <a href="{% url 'pproducto' m.idProducto %}"><img src="{%static 'img/ejemplo.png' %}" class="img-fluid producto">
+                <div class="col-sm-4 columnas fuente">
+                    <a href="{% url 'pproducto' m.idProducto %}" style="color: black;"><img src="{%static 'img/ejemplo.png' %}" class="img-fluid producto">
                         <h4>producto</h4>
                         <h2>Precio</h2>
                     </a>
-                    <a href="{% url 'agregarcarrito' m.idProducto user.id %}" class="myButton">Agregar
+                    <a href="{% url 'agregarcarrito' m.idProducto user.id %}" class="myButton fuente">Agregar
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                         </svg>

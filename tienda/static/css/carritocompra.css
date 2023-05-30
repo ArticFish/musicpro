@@ -32,6 +32,10 @@
     text-align: center;
     margin-top: 10%;
 }
+.productos{
+    text-align: center;
+    margin-top: 5%;
+}
 .columnas{
     text-align: center;
     margin-top: 5%;
@@ -49,9 +53,7 @@ body {
 	display:inline-block;
 	cursor:pointer;
 	color:white;
-	font-family:Arial;
-	font-size:17px;
-	padding:5px 31px;
+	padding:16px 31px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #000000;
 }
@@ -62,6 +64,9 @@ body {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+.miniatura {
+    width: 70px;
 }
 
 .myButton:hover {
