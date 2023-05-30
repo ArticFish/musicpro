@@ -43,12 +43,32 @@ def cerrarsesion(request):
 
 
 def agregarcarrito(request,idp,idu):
-    pro = producto
-    usuario = User
-    pro.idProducto = producto.objects.get(idProducto=idp)
-    usuario.id = User.objects.get(id=idu)
-    carrito.objects.create(idProducto=pro.idProducto,idUsuario=usuario.id)
-    return render(request,'index.html')
+    if request.user.id == idu:
+        pro = producto
+        usuario = User
+        cantidadproducto = request.POST['quantity']
+        stock = producto.objects.get(idProducto=idp)
+        pro.idProducto = producto.objects.get(idProducto=idp)
+        usuario.id = User.objects.get(id=idu)
+        try:
+            carro=carrito.objects.get(idProducto=pro.idProducto,idUsuario=usuario.id)
+            carro.cantidad = carro.cantidad+int(cantidadproducto)
+            carro.save()
+        except:
+            carrito.objects.create(idProducto=pro.idProducto,idUsuario=usuario.id,cantidad=cantidadproducto)
+
+        stock.stock=stock.stock-int(cantidadproducto)
+        stock.save()
+        return redirect('index')
+    else:
+        return redirect('index')
+
+def quitarcarrito(request,idp,idu):
+    if request.user.id == idu:
+        carrito.objects.get(idProducto=idp,idUsuario=idu).delete()
+        return redirect('index')
+    else:
+        return redirect('index')
 
 def iniciarsesion(request):
     user = request.POST['username']

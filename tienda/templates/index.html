@@ -37,10 +37,7 @@
                 <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
             </svg>
         </div>
-        <div class="col-sm-1">
-            <img src="{%static 'img/logo.png' %}" class="img-fluid logo">
-        </div>
-        <div class="col-sm-4"> 
+        <div class="col-sm-4">
             <div class="search-container">
                 <form action="">
                     <input type="text" placeholder="Buscar..." name="search" size="40">
@@ -48,10 +45,13 @@
                 </form>
             </div>
         </div>
-        <div class="col-sm-1">
+        <div class="col-sm-1"> 
+            <img src="{%static 'img/logo.png' %}" class="img-fluid logo">
+        </div>
+        <div class="col-sm-4" style="text-align: right;">
             <a href="{% url 'carritocompra'  user.id %}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-cart3" viewBox="0 0 16 16">
                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-              </svg>
+            </svg>
             </a>
         </svg></div>
         <div class="col-sm-1">
@@ -78,19 +78,29 @@
     </nav>
 </header>
 <body class="container-sm">
-    <div class="relleno margen" >
+    <div class="relleno margen">
         <div class="row">
             <h1>Productos en oferta</h1>
             {% for m in lista %}
-                <div class="col-sm-4 columnas fuente">
+                <div class="col-sm-4 columnas fuente block">
+                    <div class="row">
+                        <div class="col-sm-4 fuente"></div>
+                        <div class="col-sm-4 fuente"></div>
+                        <div class="col-sm-4 fuente" style="position: relative;">
+                            {% if m.stock == 0 %}   
+                                <h1>Agotado</h1>
+                            {% else %}
+                                <h1><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30 fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                                    <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg></h1>
+                            {% endif %}
+                        </div>
+                    </div>
                     <a href="{% url 'pproducto' m.idProducto %}" style="color: black;"><img src="{%static 'img/ejemplo.png' %}" class="img-fluid producto">
-                        <h4>producto</h4>
-                        <h2>Precio</h2>
-                    </a>
-                    <a href="{% url 'agregarcarrito' m.idProducto user.id %}" class="myButton fuente">Agregar
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                        </svg>
+                        <h4>{{ m.nombre }}</h4>
+                        <h2>$ {{ m.precio }}</h2>
+                        <hr>
                     </a>
                 </div>
             {% endfor %}
