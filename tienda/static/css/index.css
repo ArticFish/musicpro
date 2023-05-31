@@ -1,21 +1,24 @@
-.cabecera{
-    background: rgb(238,241,100);
+.cabecera {
+    background: rgb(238, 241, 100);
     text-align: center;
-    background: linear-gradient(90deg, rgba(238,241,100,0.989233193277311) 0%, rgba(255,48,104,1) 50%, rgba(255,0,52,1) 100%);
+    background: linear-gradient(90deg, rgba(238, 241, 100, 0.989233193277311) 0%, rgba(255, 48, 104, 1) 50%, rgba(255, 0, 52, 1) 100%);
 }
 
-.iconos{
+.iconos {
     text-align: center;
 }
-.acolor{
+
+.acolor {
     text-decoration: none;
     color: white;
 }
-.logo{
+
+.logo {
     height: 50px;
 }
-.relleno{
-    background-color:rgba(255, 255, 255, 0.6); 
+
+.relleno {
+    background-color: rgba(255, 255, 255, 0.6);
     border-radius: 13px;
     text-align: center;
     font-size: 30px;
@@ -24,36 +27,42 @@
     margin-top: 15%;
 }
 
-.producto{
+.producto {
     height: 150px;
 }
-.filas{
+
+.filas {
     text-align: center;
 }
-.columnas{
+
+.columnas {
     text-align: center;
     margin-top: 5%;
 }
-h2{
-    color:red;
+
+h2 {
+    color: red;
     font-size: 30px;
 }
+
 body {
     background-color: #EDF2F4;
 }
+
 .myButton {
-	background-color:#ff0000;
-	border-radius:28px;
-	border:1px solid #ff0000;
-	display:inline-block;
-	cursor:pointer;
-	color:white;
-	font-family:Arial;
-	font-size:17px;
-	padding:5px 31px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #000000;
+    background-color: #ff0000;
+    border-radius: 28px;
+    border: 1px solid #ff0000;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-family: Arial;
+    font-size: 17px;
+    padding: 5px 31px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #000000;
 }
+
 .center {
     margin: 0;
     position: absolute;
@@ -63,25 +72,79 @@ body {
     transform: translate(-50%, -50%);
 }
 
+footer {
+    position: absolute;
+}
+
 .myButton:hover {
-	background-color:#ffffff;
+    background-color: #ffffff;
 }
+
 .myButton:active {
-	position:relative;
-	top:1px;
+    position: relative;
+    top: 1px;
 }
+
 .col-container {
-    display: table; /* Make the container element behave like a table */
-    width: 100%; /* Set full-width to expand the whole page */
+    display: table;
+    /* Make the container element behave like a table */
+    width: 100%;
+    /* Set full-width to expand the whole page */
 }
-.col-sm-4{
-    display: table-cell; /* Make elements inside the container behave like table cells */
+
+.col-sm-4 {
+    display: table-cell;
+    /* Make elements inside the container behave like table cells */
 }
-h1 { font-family: "Gill Sans", Calibri, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } 
-h3 { font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } 
-p { font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } 
-.fuente { font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } 
-pre { font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; }
+
+h1 {
+    font-family: "Gill Sans", Calibri, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 26.4px;
+}
+
+h3 {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 15.4px;
+}
+
+p {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.fuente {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    font-size: 21px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+pre {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 18.5714px;
+}
+
+.futer {
+    width: 100%;
+}
 
 .row {
     display: -webkit-box;
@@ -91,9 +154,9 @@ pre { font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; font-size: 
     display: flex;
     /* fix for Firefox */
     width: 100%;
-  }
-  
-  .block {
+}
+
+.block {
     max-width: 33%;
     -webkit-box-flex: 1;
     -moz-box-flex: 1;
@@ -117,20 +180,20 @@ pre { font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; font-size: 
     -ms-flex-pack: justify;
     -webkit-justify-content: space-between;
     justify-content: space-between;
-  }
-  
-  .block h3 {
+}
+
+.block h3 {
     margin-top: 0;
     margin-bottom: 1em;
-  }
-  
-  .block div {
+}
+
+.block div {
     text-align: center;
     margin-top: 1em;
-  }
-  
-  /* pretty it up! */
-  .block {
+}
+
+
+.block {
     margin: 0 .5em;
     padding: 1em;
     -moz-box-sizing: border-box;
@@ -139,4 +202,4 @@ pre { font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; font-size: 
     -moz-border-radius: 1em;
     -webkit-border-radius: 1em;
     border-radius: 1em;
-  }
+}

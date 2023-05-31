@@ -67,27 +67,32 @@
     </nav>
 </header>
 
-<body class="container-sm">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 m-10 center relleno">
-            <div class="row">
-                <div class="col-md-3">
-                    <img src="{%static 'img/ejemplo.png' %}" class="img-fluid foto">
+<body>
+    <div class="container-sm">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 relleno">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="{%static 'img/ejemplo.png' %}" class="img-fluid foto">
+                    </div>
+                    <div class="col-md-1">
+                        <div class="row"> <img src="{%static 'img/x.png' %}" class="img-fluid miniatura"> </div>
+                        <div class="row"> <img src="{%static 'img/x.png' %}" class="img-fluid miniatura"> </div>
+                        <div class="row"> <img src="{%static 'img/x.png' %}" class="img-fluid miniatura"> </div>
+                        <div class="row"> <img src="{%static 'img/x.png' %}" class="img-fluid miniatura"> </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-7">
+                        {% block informacion %}
+                        {% endblock informacion %}
+                    </div>
                 </div>
-                <div class="col-md-1">
-                    <div class="row"> <img src="{%static 'img/x.png' %}" class="img-fluid miniatura"> </div>
-                    <div class="row"> <img src="{%static 'img/x.png' %}" class="img-fluid miniatura"> </div>
-                    <div class="row"> <img src="{%static 'img/x.png' %}" class="img-fluid miniatura"> </div>
-                    <div class="row"> <img src="{%static 'img/x.png' %}" class="img-fluid miniatura"> </div>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-7">
-                    {% block informacion %}
-                    {% endblock informacion %}
-                </div>
-                <div class="col-md-2"></div>
             </div>
+            <div class="col-md-1"></div>
         </div>
-    </div>
+        </div>
 </body>
+{% block footer %}
+{% endblock%}
+</html>

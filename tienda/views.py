@@ -27,6 +27,8 @@ def carritocompra(request,idu):
 def registro(request):
     return render(request,'registro.html')
 
+def pagoproducto(request):
+    return render(request,'pago.html')
 
 def iniciar(request):
     return render(request,'iniciar.html')
