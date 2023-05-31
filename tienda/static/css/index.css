@@ -24,12 +24,13 @@
     font-size: 30px;
     padding: 7px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    margin-top: 15%;
+    margin-top: 5%;
 }
 
 .producto {
     height: 150px;
 }
+
 
 .filas {
     text-align: center;
@@ -155,6 +156,24 @@ pre {
     /* fix for Firefox */
     width: 100%;
 }
+.alinear {
+    
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
 
 .block {
     max-width: 33%;

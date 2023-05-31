@@ -32,54 +32,50 @@
 </head>
 <header class="container-fluid">
     <nav class="navbar navbar-default navbar-fixed-top cabecera">
-        <div class="col-sm-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-list" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-        </div>
-        <div class="col-sm-4">
-            <div class="search-container">
-                <form action="">
-                    <input type="text" placeholder="Buscar..." name="search" size="40">
-                    <button type="submit">Buscar</button>
+        <div class="row">
+            <div class="col-sm-1 alinear">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="black" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+            </div>
+            <div class="col-sm-9 alinear">
+                <form action="" autocomplete="off" class="form-horizontal" method="post" accept-charset="utf-8">
+                    <div class="input-group">
+                        <input name="searchtext" value="" class="form-control" type="text">
+                        <span class="input-group-btn">
+                           <button class="btn btn-default" type="submit" id="addressSearch">
+                               <span class="icon-search"> Buscar </span>
+                           </button>
+                        </span>
+                    </div>
                 </form>
             </div>
-        </div>
-        <div class="col-sm-1"> 
-            <img src="{%static 'img/logo.png' %}" class="img-fluid logo">
-        </div>
-        <div class="col-sm-4" style="text-align: right;">
-            <a href="{% url 'carritocompra'  user.id %}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-cart3" viewBox="0 0 16 16">
-                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-            </svg>
-            </a>
-        </svg></div>
-        <div class="col-sm-1">
-            
-            {% if user|is_guest_user %}
-            <a href="{% url 'iniciar' %}" class="acolor"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-person-circle" viewBox="0 0 16 16" >
-                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-            </svg>
-            <br>
-            iniciar sesion
-            </a>
-            {% else %}
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-person-circle" viewBox="0 0 16 16">
-                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-            </svg>
-            <br>
-            {{ user.username }}
-            <br>
-            <a href="{% url 'cerrarsesion' %}" class="acolor"> cerrar sesion</a>
-            {% endif %} 
+            <div class="col-sm-1 alinear" style="text-align: right;">
+                <a href="{% url 'carritocompra'  user.id %}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-cart3" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>
+                </a>
+            </svg></div>
+            <div class="col-sm-1 alinear">
+                {% if user|is_guest_user %}
+                <a href="{% url 'iniciar' %}" class="acolor"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-person-circle" viewBox="0 0 16 16" >
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>
+                </a>
+                {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>
+                {% endif %} 
+            </div>
         </div>
     </nav>
 </header>
 <body>
-    <div class="relleno margen container-sm">
-        <div class="row">
+    <div class="container-sm">
+        <div class="row relleno">
             <a href="{% url 'pagoproducto' %}"><h1>PAGO SERGIO</h1></a>
             <h1>Productos en oferta</h1>
             {% for m in lista %}
@@ -101,6 +97,10 @@
                     <a href="{% url 'pproducto' m.idProducto %}" style="color: black;"><img src="{%static 'img/ejemplo.png' %}" class="img-fluid producto">
                         <h4>{{ m.nombre }}</h4>
                         <h2>$ {{ m.precio }}</h2>
+                        <h5>{{ m.idDetalle.marca }}</h5>
+                        <h5>{{ m.idDetalle.color }}</h5>
+                        <h5>{{ m.idDetalle.idCategoria }}</h5>
+                        <h5>{{ m.idDetalle.idTipopro }}</h5>
                         <hr>
                     </a>
                 </div>
