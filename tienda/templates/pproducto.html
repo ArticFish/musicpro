@@ -5,8 +5,8 @@
     <h2>{{ lista.nombre }}</h2>
 </div>
 <div class="row">
-    <h1 class="precio fuente">${{ lista.precio }}</h1>
-    <h5>Precio Referencia $79.990</h5>
+    <h1 class="precio">${{ lista.preciooferta }}</h1>
+    <h6>Precio Referencia ${{ lista.precio }}</h6>
 </div>
 <div class="row">
     <h6>Stock disponible: {{ lista.stock }}</h6>
@@ -24,6 +24,17 @@
                 </svg>
             </button>
     </form>
+</div>
+<div class="row" style="margin-top: 5%;">
+    <h5>Descripcion</h5>
+    <hr>
+    <p>{{ lista.descripcion }}</p>
+</div>
+<div class="row" style="margin-top: 5%;">
+    <h5>Detalles</h5>
+    <hr>
+    <p>Marca: {{ lista.idDetalle.marca }}</p>
+    <p>Color: {{ lista.idDetalle.color }}</p>
 </div>
 {% endblock informacion %}
 

@@ -102,6 +102,7 @@ footer {
 .quantity{
     text-align: center;
 }
+h1 { font-family: "Gill Sans", Calibri, sans-serif; font-size: 40px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } 
 h2 { font-family: "Gill Sans", Calibri, sans-serif; font-size: 33px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } 
 h3 { font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; }
 h5 { font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; font-size: 17px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } 

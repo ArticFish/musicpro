@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from .models import producto,carrito
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+import math 
 from guest_user.decorators import allow_guest_user
 from django.contrib.auth.decorators import user_passes_test,login_required
 
@@ -10,6 +11,10 @@ from django.contrib.auth.decorators import user_passes_test,login_required
 @allow_guest_user
 def index(request):
     lproductos = producto.objects.all()
+    for m in lproductos:
+        if m.oferta !=0:
+            m.preciooferta = math.trunc(m.precio - (m.precio*m.oferta/100))
+            m.save()
     contexto = {"lista":lproductos}
     return render(request,'index.html',contexto)
 
@@ -28,13 +33,18 @@ def registro(request):
     return render(request,'registro.html')
 
 def pagoproducto(request):
-    return render(request,'pago.html')
+    pag = request.META.get('HTTP_REFERER')
+    contexto = {"lista":pag}
+    return render(request,'pago.html',contexto)
 
 def iniciar(request):
     return render(request,'iniciar.html')
 
 def pproducto(request,idp):
     lproductos = producto.objects.get(idProducto=idp)
+    #ofertas = math.trunc(lproductos.precio - (lproductos.precio*lproductos.oferta/100))
+    if lproductos.oferta != 0:
+        lproductos.preciooferta = math.trunc(lproductos.precio - (lproductos.precio*lproductos.oferta/100))
     contexto = {"lista":lproductos}
     return render(request,'pproducto.html',contexto)
 
@@ -82,7 +92,7 @@ def iniciarsesion(request):
         return redirect('index')
     else:
         messages.success(request,'Usuario o contrasena incorrectos')
-        return render(request,'prueba.html')
+        return render(request,'iniciar.html')
 
 def registrar(request):
     nombre = request.POST['registrarUser']
