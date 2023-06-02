@@ -97,7 +97,9 @@ footer {
     display: table-cell;
     /* Make elements inside the container behave like table cells */
 }
-
+.margen{
+    margin-bottom: 1.5em;
+}
 h1 {
     font-family: "Gill Sans", Calibri, sans-serif;
     font-size: 24px;
@@ -149,7 +151,7 @@ p {
 }
 
 .block {
-    max-width: 33%;
+    max-width: 33.3%;
     -webkit-box-flex: 1;
     -moz-box-flex: 1;
     -webkit-flex: 1 30%;

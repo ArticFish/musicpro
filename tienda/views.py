@@ -10,12 +10,16 @@ from django.contrib.auth.decorators import user_passes_test,login_required
 # Create your views here.
 @allow_guest_user
 def index(request):
-    lproductos = producto.objects.all()
+    lproductos = producto.objects.all().order_by('idCategoria')
     for m in lproductos:
         if m.oferta !=0:
             m.preciooferta = math.trunc(m.precio - (m.precio*m.oferta/100))
             m.save()
-    contexto = {"lista":lproductos}
+    instrumentocuerda = producto.objects.filter(idCategoria=1)
+    percusion = producto.objects.filter(idCategoria=2)
+    Amplificadores = producto.objects.filter(idCategoria=3)
+    accesorios = producto.objects.filter(idCategoria=4)
+    contexto = {"lista":lproductos,"listaic":instrumentocuerda,"listap":percusion,"listaa":Amplificadores,"listaacc":accesorios}
     return render(request,'index.html',contexto)
 
 

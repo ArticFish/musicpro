@@ -15,15 +15,7 @@ class tipopro(models.Model):
     def __str__(self):
         return self.tipo
     
-class detalleproducto(models.Model):
-    idDetalle = models.AutoField(primary_key=True,verbose_name="ID autoincrementable del detalle producto")
-    marca = models.CharField(max_length=50, verbose_name="marca",blank=False,null=False)
-    color = models.CharField(max_length=50, verbose_name="Color",blank=False,null=False)
-    idCategoria = models.ForeignKey(categoria,on_delete=models.CASCADE,default=1)
-    idTipopro = models.ForeignKey(tipopro,on_delete=models.CASCADE,default=1)
 
-    def __str__(self):
-        return self.marca
 
 class producto(models.Model):
     idProducto = models.AutoField(primary_key=True,verbose_name="ID autoincrementable del producto")
@@ -33,10 +25,13 @@ class producto(models.Model):
     descripcion = models.CharField(max_length=500, verbose_name="descripcion",blank=False,null=False)
     preciooferta = models.IntegerField(verbose_name="Precio de oferta del producto")
     oferta = models.IntegerField(verbose_name="Porcentaje de oferta del producto")
-    idDetalle = models.ForeignKey(detalleproducto,on_delete=models.CASCADE,default=1)
+    marca = models.CharField(max_length=50, verbose_name="marca",blank=False,null=False)
+    color = models.CharField(max_length=50, verbose_name="Color",blank=False,null=False)
+    idCategoria = models.ForeignKey(categoria,on_delete=models.CASCADE,default=1)
+    idTipopro = models.ForeignKey(tipopro,on_delete=models.CASCADE,default=1)
 
     def __str__(self):
-        return str(self.precio)
+        return self.nombre
 
 class carrito(models.Model):
     idProducto = models.ForeignKey(producto,on_delete=models.CASCADE,default=1)
