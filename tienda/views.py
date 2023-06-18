@@ -27,7 +27,20 @@ def index(request):
 def carritocompra(request,idu):
     if request.user.id == idu:
         lproductos = carrito.objects.filter(idUsuario=idu)
-        contexto = {"lista":lproductos}
+        totalusd = 0
+        totalclp = 0
+        for i in lproductos.values_list('idProducto_id','cantidad'):
+            id = i[0]
+            totalp = producto.objects.get(idProducto=id)
+            if totalp.preciooferta == 0:
+                totalc = (totalp.precio * i[1])
+            else:
+                totalc = (math.trunc(totalp.precio - (totalp.precio*totalp.oferta/100)) * i[1])
+            totalclp = totalc + totalclp
+            totalusd = math.trunc(totalclp/800)
+        print(totalclp)
+        print(totalusd)
+        contexto = {"lista":lproductos,"listat":totalclp,"listad":totalusd}
         return render(request,'carritocompra.html',contexto)
     else:
         return redirect('index')

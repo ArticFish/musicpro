@@ -31,7 +31,7 @@ class producto(models.Model):
     idTipopro = models.ForeignKey(tipopro,on_delete=models.CASCADE,default=1)
 
     def __str__(self):
-        return self.nombre
+        return str(self.idProducto)
 
 class carrito(models.Model):
     idProducto = models.ForeignKey(producto,on_delete=models.CASCADE,default=1)

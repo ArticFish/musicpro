@@ -87,7 +87,7 @@
             <div class="row producto">
                 <div class=" col-sm-4">
                     <img src="{%static 'img/ejemplo.png' %}" height="50">
-                    {{ m.idProducto }}
+                    {{ m.idProducto.nombre }}
                 </div>
                 <div class=" col-sm-2">${{ m.idProducto.precio }}</div>
                 <div class=" col-sm-2">X{{ m.cantidad }}</div>
@@ -103,17 +103,49 @@
             </div>
             {% endfor %}
             <div class="col-sm-4"></div>
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4" style="text-align: left; margin-bottom: 2%;">Total: </div>
+            <div class="col-sm-4" style="text-align: right">Total:</div>
+            <div class="col-sm-4" style="text-align: left; margin-bottom: 2%;" id="total" name="{{ listad }}">{{ listat }}</div>
             <div class="row">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4"></div>
-                <div class="col-sm-4"><button type="button" class="btn btn-danger">Realizar Compra <svg
-                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-bag-heart-fill" viewBox="0 0 16 16">
-                            <path
-                                d="M11.5 4v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5ZM8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1Zm0 6.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z" />
-                        </svg></button></div>
+                <div class="col-sm-4">
+                    <div id="paypal-button-container"></div>
+
+                    <!-- Include the PayPal JavaScript SDK -->
+                    <script
+                        src="https://www.paypal.com/sdk/js?client-id=AVtWmw0YL4R-rlpwXhSuhuQdLXaCt8_H8bNo7of66wmWZeyl-d0BvQDOA0Mr5CxGwTJIJ2afEhskTW3y&currency=USD">
+                    </script>
+
+                    <script>
+                        const div1 = document.getElementById("total");
+                        const exampleAttr = div1.getAttribute("name");
+                        console.log(exampleAttr)
+                        // Render the PayPal button into #paypal-button-container
+                        paypal.Buttons({
+                            
+                            // Set up the transaction
+                            createOrder: function (data, actions) {
+                                return actions.order.create({
+                                    purchase_units: [{
+                                        amount: {
+                                            value: exampleAttr
+                                        }
+                                    }]
+                                });
+                            },
+
+                            // Finalize the transaction
+                            onApprove: function (data, actions) {
+                                return actions.order.capture().then(function (details) {
+                                    // Show a success message to the buyer
+                                    window.location.replace("http://127.0.0.1:8000/pagoproducto");
+                                });
+                            }
+
+
+                        }).render('#paypal-button-container');
+                    </script>
+                </div>
             </div>
             {% else %}
             <h1 style="margin-top: 25px;">No hay productos en su carrito</h1>
