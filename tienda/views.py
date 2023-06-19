@@ -65,6 +65,14 @@ def pproducto(request,idp):
     contexto = {"lista":lproductos}
     return render(request,'pproducto.html',contexto)
 
+def pproductoe(request,idp):
+    lproductos = producto.objects.get(idProducto=idp)
+    #ofertas = math.trunc(lproductos.precio - (lproductos.precio*lproductos.oferta/100))
+    if lproductos.oferta != 0:
+        lproductos.preciooferta = math.trunc(lproductos.precio - (lproductos.precio*lproductos.oferta/100))
+    contexto = {"lista":lproductos}
+    return render(request,'pproductoe.html',contexto)
+
 @user_passes_test(lambda u: u.is_authenticated,login_url='index')
 def cerrarsesion(request):
     logout(request)
