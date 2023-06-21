@@ -48,7 +48,22 @@
                 </svg>
             </div>
             <div class="col-sm-8"></div>
-            <div class="col-sm-1"style="text-align: right;">
+            <div class="col-sm-1">
+                {% if user.id == 1 %}
+                    <a href="{% url 'cproducto'  %}" class="acolor">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-plus-square-dotted" viewBox="0 0 16 16">
+                        <path d="M2.5 0c-.166 0-.33.016-.487.048l.194.98A1.51 1.51 0 0 1 2.5 1h.458V0H2.5zm2.292 0h-.917v1h.917V0zm1.833 0h-.917v1h.917V0zm1.833 0h-.916v1h.916V0zm1.834 0h-.917v1h.917V0zm1.833 0h-.917v1h.917V0zM13.5 0h-.458v1h.458c.1 0 .199.01.293.029l.194-.981A2.51 2.51 0 0 0 13.5 0zm2.079 1.11a2.511 2.511 0 0 0-.69-.689l-.556.831c.164.11.305.251.415.415l.83-.556zM1.11.421a2.511 2.511 0 0 0-.689.69l.831.556c.11-.164.251-.305.415-.415L1.11.422zM16 2.5c0-.166-.016-.33-.048-.487l-.98.194c.018.094.028.192.028.293v.458h1V2.5zM.048 2.013A2.51 2.51 0 0 0 0 2.5v.458h1V2.5c0-.1.01-.199.029-.293l-.981-.194zM0 3.875v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zM0 5.708v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zM0 7.542v.916h1v-.916H0zm15 .916h1v-.916h-1v.916zM0 9.375v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zm-16 .916v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zm-16 .917v.458c0 .166.016.33.048.487l.98-.194A1.51 1.51 0 0 1 1 13.5v-.458H0zm16 .458v-.458h-1v.458c0 .1-.01.199-.029.293l.981.194c.032-.158.048-.32.048-.487zM.421 14.89c.183.272.417.506.69.689l.556-.831a1.51 1.51 0 0 1-.415-.415l-.83.556zm14.469.689c.272-.183.506-.417.689-.69l-.831-.556c-.11.164-.251.305-.415.415l.556.83zm-12.877.373c.158.032.32.048.487.048h.458v-1H2.5c-.1 0-.199-.01-.293-.029l-.194.981zM13.5 16c.166 0 .33-.016.487-.048l-.194-.98A1.51 1.51 0 0 1 13.5 15h-.458v1h.458zm-9.625 0h.917v-1h-.917v1zm1.833 0h.917v-1h-.917v1zm1.834-1v1h.916v-1h-.916zm1.833 1h.917v-1h-.917v1zm1.833 0h.917v-1h-.917v1zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                    </svg>
+                    <br>
+                    <h6>Agregar producto</h6>
+                    </a>
+                {% elif user.username == 'Contador' %}
+                    <a href="https://www.sandbox.paypal.com/signin">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-paypal" viewBox="0 0 16 16">
+                            <path d="M14.06 3.713c.12-1.071-.093-1.832-.702-2.526C12.628.356 11.312 0 9.626 0H4.734a.7.7 0 0 0-.691.59L2.005 13.509a.42.42 0 0 0 .415.486h2.756l-.202 1.28a.628.628 0 0 0 .62.726H8.14c.429 0 .793-.31.862-.731l.025-.13.48-3.043.03-.164.001-.007a.351.351 0 0 1 .348-.297h.38c1.266 0 2.425-.256 3.345-.91.379-.27.712-.603.993-1.005a4.942 4.942 0 0 0 .88-2.195c.242-1.246.13-2.356-.57-3.154a2.687 2.687 0 0 0-.76-.59l-.094-.061ZM6.543 8.82a.695.695 0 0 1 .321-.079H8.3c2.82 0 5.027-1.144 5.672-4.456l.003-.016c.217.124.4.27.548.438.546.623.679 1.535.45 2.71-.272 1.397-.866 2.307-1.663 2.874-.802.57-1.842.815-3.043.815h-.38a.873.873 0 0 0-.863.734l-.03.164-.48 3.043-.024.13-.001.004a.352.352 0 0 1-.348.296H5.595a.106.106 0 0 1-.105-.123l.208-1.32.845-5.214Z"/>
+                        </svg>
+                    </a>
+                {% endif %}
             </div>
             <div class="col-sm-1" style="text-align: right;">
                 <a href="{% url 'carritocompra'  user.id %}"><svg xmlns="http://www.w3.org/2000/svg" width="30"
@@ -80,7 +95,17 @@
             {% for m in listaic %}
                 <div class="col-sm-4 columnas fuente block">
                     <div class="row">
-                        <div class="col-sm-4 fuente"></div>
+                        <div class="col-sm-4 fuente"style="position: relative;">
+                            {% if user.id == 1 %}
+                            <h1>
+                                <a href="{% url 'pproductoe' m.idProducto %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-wrench" viewBox="0 0 16 16">
+                                        <path d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11l.471.242z"/>
+                                    </svg>
+                                </a>
+                            </h1>
+                            {% endif %}
+                        </div>
                         <div class="col-sm-4 fuente"></div>
                         <div class="col-sm-4 fuente" style="position: relative;">
                             {% if m.stock == 0 %}
@@ -96,8 +121,8 @@
                             {% endif %}
                         </div>
                     </div>
-                    <a href="{% url 'pproducto' m.idProducto %}" style="color: black;"><img
-                            src="{%static 'img/ejemplo.png' %}" class="img-fluid producto">
+                    <a href="{% url 'pproducto' m.idProducto %}" style="color: black;">
+                        <img src="{{ m.foto.url }}" alt="" class="img-fluid producto">
                             <h4>{{ m.nombre }}</h4>
                             {% if m.preciooferta != 0 %}
                                 <h2>$ {{ m.preciooferta }}</h2>
@@ -114,6 +139,7 @@
                 <div class="col-sm-4 columnas fuente block">
                     <div class="row">
                         <div class="col-sm-4 fuente"style="position: relative;">
+                            {% if user.id == 1 %}
                             <h1>
                                 <a href="{% url 'pproductoe' m.idProducto %}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-wrench" viewBox="0 0 16 16">
@@ -121,6 +147,7 @@
                                     </svg>
                                 </a>
                             </h1>
+                            {% endif %}
                         </div>
                         <div class="col-sm-4 fuente"></div>
                         <div class="col-sm-4 fuente" style="position: relative;">
@@ -137,8 +164,8 @@
                             {% endif %}
                         </div>
                     </div>
-                    <a href="{% url 'pproducto' m.idProducto %}" style="color: black;"><img
-                            src="{%static 'img/ejemplo.png' %}" class="img-fluid producto">
+                    <a href="{% url 'pproducto' m.idProducto %}" style="color: black;">
+                        <img src="{{ m.foto.url }}" alt="" class="img-fluid producto">
                         <h4>{{ m.nombre }}</h4>
                         {% if m.preciooferta != 0 %}
                                 <h2>$ {{ m.preciooferta }}</h2>
@@ -154,7 +181,17 @@
             {% for m in listaa %}
                 <div class="col-sm-4 columnas fuente block">
                     <div class="row">
-                        <div class="col-sm-4 fuente"></div>
+                        <div class="col-sm-4 fuente"style="position: relative;">
+                            {% if user.id == 1 %}
+                            <h1>
+                                <a href="{% url 'pproductoe' m.idProducto %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-wrench" viewBox="0 0 16 16">
+                                        <path d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11l.471.242z"/>
+                                    </svg>
+                                </a>
+                            </h1>
+                            {% endif %}
+                        </div>
                         <div class="col-sm-4 fuente"></div>
                         <div class="col-sm-4 fuente" style="position: relative;">
                             {% if m.stock == 0 %}
@@ -170,8 +207,8 @@
                             {% endif %}
                         </div>
                     </div>
-                    <a href="{% url 'pproducto' m.idProducto %}" style="color: black;"><img
-                            src="{%static 'img/ejemplo.png' %}" class="img-fluid producto">
+                    <a href="{% url 'pproducto' m.idProducto %}" style="color: black;">
+                        <img src="{{ m.foto.url }}" alt="" class="img-fluid producto">
                             <h4>{{ m.nombre }}</h4>
                             {% if m.preciooferta != 0 %}
                                 <h2>$ {{ m.preciooferta }}</h2>
@@ -187,7 +224,17 @@
             {% for m in listaacc %}
                 <div class="col-sm-4 columnas fuente block">
                     <div class="row">
-                        <div class="col-sm-4 fuente"></div>
+                        <div class="col-sm-4 fuente"style="position: relative;">
+                            {% if user.id == 1 %}
+                            <h1>
+                                <a href="{% url 'pproductoe' m.idProducto %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-wrench" viewBox="0 0 16 16">
+                                        <path d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11l.471.242z"/>
+                                    </svg>
+                                </a>
+                            </h1>
+                            {% endif %}
+                        </div>
                         <div class="col-sm-4 fuente"></div>
                         <div class="col-sm-4 fuente" style="position: relative;">
                             {% if m.stock == 0 %}
@@ -203,8 +250,8 @@
                             {% endif %}
                         </div>
                     </div>
-                    <a href="{% url 'pproducto' m.idProducto %}" style="color: black;"><img
-                            src="{%static 'img/ejemplo.png' %}" class="img-fluid producto">
+                    <a href="{% url 'pproducto' m.idProducto %}" style="color: black;">
+                        <img src="{{ m.foto.url }}" alt="" class="img-fluid producto">
                             <h4>{{ m.nombre }}</h4>
                             {% if m.preciooferta != 0 %}
                                 <h2>$ {{ m.preciooferta }}</h2>

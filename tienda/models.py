@@ -6,7 +6,7 @@ class categoria(models.Model):
     categoria = models.CharField(max_length=50, verbose_name="categoria",blank=False,null=False)
     
     def __str__(self):
-        return self.categoria
+        return str(self.idCategoria)
 
 class tipopro(models.Model):
     idTipopro = models.AutoField(primary_key=True,verbose_name="ID autoincrementable del tipo producto")
@@ -19,7 +19,7 @@ class tipopro(models.Model):
 
 class producto(models.Model):
     idProducto = models.AutoField(primary_key=True,verbose_name="ID autoincrementable del producto")
-    nombre = models.CharField(max_length=50, verbose_name="nombre",blank=False,null=False)
+    nombre = models.CharField(max_length=300, verbose_name="nombre",blank=False,null=False)
     precio = models.IntegerField(verbose_name="Precio producto")
     stock = models.IntegerField(verbose_name="Stock producto")
     descripcion = models.CharField(max_length=500, verbose_name="descripcion",blank=False,null=False)
@@ -27,6 +27,7 @@ class producto(models.Model):
     oferta = models.IntegerField(verbose_name="Porcentaje de oferta del producto")
     marca = models.CharField(max_length=50, verbose_name="marca",blank=False,null=False)
     color = models.CharField(max_length=50, verbose_name="Color",blank=False,null=False)
+    foto = models.ImageField(upload_to="estacionamientos",blank=True,null=True)
     idCategoria = models.ForeignKey(categoria,on_delete=models.CASCADE,default=1)
     idTipopro = models.ForeignKey(tipopro,on_delete=models.CASCADE,default=1)
 

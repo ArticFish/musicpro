@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
-from .models import producto,carrito
+from .models import categoria, producto,carrito, tipopro
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import math 
@@ -54,8 +54,44 @@ def pagoproducto(request):
     contexto = {"lista":pag}
     return render(request,'pago.html',contexto)
 
+def eproducto(request,idp):
+    nombree = request.POST['nombre']
+    prec = request.POST['precio']
+    stock = request.POST['quantity']
+    desc = request.POST['descripcion']
+    marc = request.POST['marca']
+    colo = request.POST['color']
+    fotoe = request.FILES['subir']
+    pro=producto.objects.get(idProducto=idp)
+    pro.nombre = nombree
+    pro.precio = prec
+    pro.stock = stock
+    pro.descripcion = desc
+    pro.marca = marc
+    pro.color = colo
+    pro.foto = fotoe
+    pro.save()
+    return redirect('index')
+
 def iniciar(request):
     return render(request,'iniciar.html')
+
+def crproducto(request):
+    nombree = request.POST['nombre']
+    prec = request.POST['precio']
+    stock = request.POST['quantity']
+    desc = request.POST['descripcion']
+    marc = request.POST['marca']
+    colo = request.POST['color']
+    fotoe = request.FILES['subir']
+    c = request.POST['registrarRol']
+    cat = categoria.objects.get(idCategoria=c)
+    pro = producto.objects.create(nombre=nombree,precio=prec,stock=stock,descripcion=desc,preciooferta=0,oferta=0,marca=marc,color=colo,foto=fotoe,idCategoria=cat)
+    pro.save()
+    return redirect('index')
+
+def cproducto(request):
+    return render(request,'crearproducto.html')
 
 def pproducto(request,idp):
     lproductos = producto.objects.get(idProducto=idp)

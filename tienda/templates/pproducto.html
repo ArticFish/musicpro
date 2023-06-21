@@ -1,6 +1,14 @@
 {% extends 'plantillaProducto.html' %}
 {%load static%}
 {% block informacion %}
+<div class="col-md-3">
+    <img src="{{ lista.foto.url }}" alt="" class="img-fluid foto">
+</div>
+<div class="col-md-1">
+</div>
+<div class="col-md-1"></div>
+<div class="col-md-7">
+
 <div class="row">
     <h2>{{ lista.nombre }}</h2>
 </div>
@@ -40,6 +48,7 @@
     <hr>
     <p>Marca: {{ lista.marca }}</p>
     <p>Color: {{ lista.color }}</p>
+</div>
 </div>
 {% endblock informacion %}
 

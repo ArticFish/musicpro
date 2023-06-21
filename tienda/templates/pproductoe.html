@@ -1,45 +1,55 @@
 {% extends 'plantillaProductoe.html' %}
 {%load static%}
 {% block informacion %}
-<div class="row">
-    <h2>{{ lista.nombre }}</h2>
+<form action="{% url 'eproducto' lista.idProducto %}" method="post" name="formulario" id="form1" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="col-md-3">
+    <img src="{{ lista.foto.url }}" alt="" class="img-fluid foto">
+    <div class="form-group" style="margin-top: 5px;">
+        <input type="file" class="form-control" id="subir" name="subir" style="visibility: visible;" accept="image/png, image/jpeg, image/jpg" required value="{{ lista.foto.url }}"> 
+    </div>
 </div>
-<div class="row">
-    {% if lista.preciooferta != 0 %}
-        <h1 class="precio">Precio oferta: ${{ lista.preciooferta }}</h1>
-        <h5>Precio referencia: $ {{ lista.precio }}</h5>
-    {% else %}
-        <h2>$ {{ lista.precio }}</h2>
-    {% endif %}
+<div class="col-md-1">
 </div>
-<div class="row">
-    <h6>Stock disponible: {{ lista.stock }}</h6>
-</div>
-
-<div class="row align-items-center">
-    <form action="{% url 'agregarcarrito' lista.idProducto user.id %}" method="post" name="formulario" id="form1">
-        {% csrf_token %}
-        <input type="number" id="quantity" name="quantity" min="1" max="{{ lista.stock }}" class="quantity" size="10"
-            value="1">
-        <button class="boton fuente">Agregar
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart"
-                viewBox="0 0 16 16">
-                <path
-                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-            </svg>
-        </button>
+<div class="col-md-1"></div>
+<div class="col-md-7">
+    <div class="row">
+        <h5>Nombre producto:</h5>
+        <h2><input type="text" class="form-control" id="nombre" name="nombre" value="{{ lista.nombre }}" size="10"></h2>
+    </div>
+    <div class="row">
+        {% if lista.preciooferta != 0 %}
+            <h1 class="precio">Precio oferta: ${{ lista.preciooferta }}</h1>
+            <h5>Precio referencia: $ {{ lista.precio }}</h5>
+        {% else %}
+            <h5>Precio actual:</h5>
+            <h2><input type="number" class="form-control " id="precio" name="precio" value="{{ lista.precio }}" size="10"></h2>
+        {% endif %}
+    </div>
+    <div class="row">
+        <h6>Stock actual: {{ lista.stock }}</h6>
+    </div>
+    
+    <div class="row align-items-center">
+        <h2><input type="number" id="quantity" name="quantity" min="1" class="quantity form-control" size="10" value="{{ lista.stock }}"></h2>
+    </div>
+    <div class="row" style="margin-top: 5%;">
+        <hr>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1"><h5>Descripcion</h5></label>
+            <textarea class="form-control" id="descripcion" name="descripcion" rows="3">{{ lista.descripcion }}</textarea>
+          </div>
+    </div>
+    <div class="row" style="margin-top: 5%;">
+        <h5>Detalles</h5>
+        <hr>
+        <h5>Marca:</h5>
+        <h2><input type="text" class="form-control " id="marca" name="marca" value="{{ lista.marca }}" size="10"></h2>
+        <h5>Color: </h5>
+        <h2><input type="text" class="form-control " id="color" name="color" value="{{ lista.color }}" size="10"></h2>
+    </div>
+    <button class="boton fuente">Modificar producto</button>
     </form>
-</div>
-<div class="row" style="margin-top: 5%;">
-    <h5>Descripcion</h5>
-    <hr>
-    <p>{{ lista.descripcion }}</p>
-</div>
-<div class="row" style="margin-top: 5%;">
-    <h5>Detalles</h5>
-    <hr>
-    <p>Marca: {{ lista.marca }}</p>
-    <p>Color: {{ lista.color }}</p>
 </div>
 {% endblock informacion %}
 
