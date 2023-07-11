@@ -1,0 +1,143 @@
+.cabecera{
+    background: rgb(238,241,100);
+    text-align: center;
+    background-color: #D90429 ;
+}
+
+.iconos{
+    text-align: center;
+}
+.acolor{
+    text-decoration: none;
+    color: white;
+}
+.logo{
+    height: 50px;
+}
+
+.relleno{
+    background-color:rgba(255, 255, 255, 0.6); 
+    border-radius: 13px;
+    text-align: center;
+    font-size: 30px;
+    padding: 7px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-top: 5%;
+}
+
+.producto{
+    height: 150px;
+}
+.filas{
+    text-align: center;
+    margin-top: 10%;
+}
+.productos{
+    text-align: center;
+    margin-top: 5%;
+}
+.columnas{
+    text-align: center;
+    margin-top: 5%;
+}
+h2{
+    color:red;
+}
+body {
+    background-color: #EDF2F4;
+}
+.myButton {
+	background-color:#ff0000;
+	border-radius:28px;
+	border:1px solid #ff0000;
+	display:inline-block;
+	cursor:pointer;
+	color:white;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #000000;
+}
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.miniatura {
+    width: 70px;
+}
+
+footer {
+    
+    bottom: 0;  /* Footer height */
+}
+.myButton:hover {
+	background-color:#ffffff;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+h1 { font-family: "Gill Sans", Calibri, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } 
+h3 { font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } 
+p { font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } 
+.fuente { font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } 
+pre { font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; }
+.row {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    /* fix for Firefox */
+    width: 100%;
+}
+
+.block {
+    max-width: 33%;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1 30%;
+    -ms-flex: 1 30%;
+    flex: 1 30%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+.block h3 {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+.block div {
+    text-align: center;
+    margin-top: 1em;
+}
+
+.block {
+    margin: 0 .5em;
+    padding: 1em;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+}

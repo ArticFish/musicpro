@@ -63,7 +63,7 @@
                 iniciar sesion
             </a>
             {% else %}
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-person-circle"
+            <svg id="ide" name="{{user.id}}" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-person-circle"
                 viewBox="0 0 16 16">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                 <path fill-rule="evenodd"
@@ -86,7 +86,8 @@
             {% for m in lista %}
             <div class="row producto">
                 <div class=" col-sm-4">
-                    <img src="{%static 'img/ejemplo.png' %}" height="50">
+                    <img src="{{ m.idProducto.foto.url }}" height="50">
+                    {{ m.carrito }}
                     {{ m.idProducto.nombre }}
                 </div>
                 <div class=" col-sm-2">${{ m.idProducto.precio }}</div>
@@ -119,6 +120,8 @@
                     <script>
                         const div1 = document.getElementById("total");
                         const exampleAttr = div1.getAttribute("name");
+                        const div3 = document.getElementById("ide");
+                        const id = div3.getAttribute("name");
                         console.log(exampleAttr)
                         // Render the PayPal button into #paypal-button-container
                         paypal.Buttons({
@@ -138,7 +141,7 @@
                             onApprove: function (data, actions) {
                                 return actions.order.capture().then(function (details) {
                                     // Show a success message to the buyer
-                                    window.location.replace("http://127.0.0.1:8000/pagoproducto");
+                                    window.location.replace("http://127.0.0.1:8000/pagar/"+id);
                                 });
                             }
                         }).render('#paypal-button-container');

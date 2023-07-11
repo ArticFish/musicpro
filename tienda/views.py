@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
-from .models import categoria, producto,carrito, tipopro
+from .models import categoria, producto,carrito,boleta
+from django.db.models import Sum
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import math 
@@ -45,6 +46,15 @@ def carritocompra(request,idu):
     else:
         return redirect('index')
 
+@user_passes_test(lambda u: u.is_authenticated,login_url='iniciar')
+def pedidos(request,idu):
+    if request.user.id == idu:
+        lproductos = boleta.objects.filter(idUsuario=idu).order_by('nro_pedido','boleta')
+        lpedidos = lproductos.values_list('nro_pedido',flat=True).order_by('nro_pedido').distinct()
+        contexto = {"lista":lproductos,"listac":lpedidos}
+        return render(request,'pedido.html',contexto)
+    else:
+        return redirect('index')
 
 def registro(request):
     return render(request,'registro.html')
@@ -54,6 +64,26 @@ def pagoproducto(request):
     contexto = {"lista":pag}
     return render(request,'pago.html',contexto)
 
+def pagar(request,idu):
+    if request.user.id == idu:
+        usuario = User
+        usuario.id = User.objects.get(id=idu)
+        carro = carrito.objects.filter(idUsuario=usuario.id)
+        npedido = 0
+        try:
+            totalc = sum(carro.values_list('total',flat=True))
+            pedido = boleta.objects.filter(idUsuario=usuario.id).latest('nro_pedido')
+            npedido = pedido.nro_pedido + 1
+        except:
+            npedido = 1
+        for c in carro:
+            boleta.objects.create(idProducto=c.idProducto,idUsuario=usuario.id,cantidad=c.cantidad,nro_pedido=npedido,precio=c.total)
+        pedido = boleta.objects.filter(idUsuario=usuario.id).latest('boleta')
+        pedido.total = totalc
+        pedido.save()
+        carro.delete()
+    return redirect('pagoproducto')
+    
 def eproducto(request,idp):
     nombree = request.POST['nombre']
     prec = request.POST['precio']
@@ -126,12 +156,10 @@ def agregarcarrito(request,idp,idu):
         try:
             carro=carrito.objects.get(idProducto=pro.idProducto,idUsuario=usuario.id)
             carro.cantidad = carro.cantidad+int(cantidadproducto)
+            carro.total = carro.total + (stock.precio*int(cantidadproducto))
             carro.save()
         except:
-            carrito.objects.create(idProducto=pro.idProducto,idUsuario=usuario.id,cantidad=cantidadproducto)
-
-        stock.stock=stock.stock-int(cantidadproducto)
-        stock.save()
+            carrito.objects.create(idProducto=pro.idProducto,idUsuario=usuario.id,cantidad=cantidadproducto,total=(stock.precio*int(cantidadproducto)))
         return redirect('index')
     else:
         return redirect('index')

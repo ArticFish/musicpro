@@ -8,14 +8,8 @@ class categoria(models.Model):
     def __str__(self):
         return str(self.idCategoria)
 
-class tipopro(models.Model):
-    idTipopro = models.AutoField(primary_key=True,verbose_name="ID autoincrementable del tipo producto")
-    tipo = models.CharField(max_length=50, verbose_name="tipo",blank=False,null=False)
 
-    def __str__(self):
-        return self.tipo
     
-
 
 class producto(models.Model):
     idProducto = models.AutoField(primary_key=True,verbose_name="ID autoincrementable del producto")
@@ -29,15 +23,35 @@ class producto(models.Model):
     color = models.CharField(max_length=50, verbose_name="Color",blank=False,null=False)
     foto = models.ImageField(upload_to="estacionamientos",blank=True,null=True)
     idCategoria = models.ForeignKey(categoria,on_delete=models.CASCADE,default=1)
-    idTipopro = models.ForeignKey(tipopro,on_delete=models.CASCADE,default=1)
 
     def __str__(self):
         return str(self.idProducto)
+    
+class estadoc(models.Model):
+    estado = models.AutoField(primary_key=True,verbose_name="ID autoincrementable del estado carrito")
+    nombreestado = models.CharField(max_length=300, verbose_name="estado",blank=False,null=False)
+    def __str__(self):
+        return str(self.nombreestado)
 
 class carrito(models.Model):
-    idProducto = models.ForeignKey(producto,on_delete=models.CASCADE,default=1)
-    idUsuario = models.ForeignKey(User,on_delete=models.CASCADE,default=1)
+    carrito = models.AutoField(primary_key=True,verbose_name="ID  del carrito")
     cantidad = models.IntegerField(verbose_name="Cantidad productos")
+    total = models.IntegerField(verbose_name="Total boleta",default=0)
+    idProducto = models.ForeignKey(producto,on_delete=models.CASCADE)
+    idUsuario = models.ForeignKey(User,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.idUsuario)
     
+class boleta(models.Model):
+    boleta = models.AutoField(primary_key=True,verbose_name="ID  del carrito")
+    cantidad = models.IntegerField(verbose_name="Cantidad productos")
+    precio = models.IntegerField(verbose_name="Precio producto",default=0)
+    total = models.IntegerField(verbose_name="Total boleta",null=True,blank=True)
+    nro_pedido = models.IntegerField(verbose_name="numero de pedido",default=1)
+    idProducto = models.ForeignKey(producto,on_delete=models.CASCADE)
+    idUsuario = models.ForeignKey(User,on_delete=models.CASCADE)
+    idEstado = models.ForeignKey(estadoc,on_delete=models.CASCADE,default=1)
+
     def __str__(self):
         return str(self.idUsuario)
