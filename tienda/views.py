@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
-from .models import categoria, producto,carrito,boleta
+from .models import categoria, estadoc, producto,carrito,boleta
 from django.db.models import Sum
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -56,6 +56,42 @@ def pedidos(request,idu):
     else:
         return redirect('index')
 
+def bodega(request):
+    if request.user.username == 'Bodeguero':
+        lproductos = boleta.objects.filter(idEstado=2).order_by('nro_pedido','boleta')
+        lpedidos = lproductos.values_list('nro_pedido','idEstado').order_by('nro_pedido').distinct()
+        contexto = {"lista":lproductos,"listac":lpedidos}
+        return render(request,'bodega.html',contexto)
+    elif request.user.username == 'Contador':
+        lproductos = boleta.objects.filter(idEstado=1).order_by('nro_pedido','boleta')
+        lpedidos = lproductos.values_list('nro_pedido','idEstado').order_by('nro_pedido').distinct()
+        contexto = {"lista":lproductos,"listac":lpedidos}
+        return render(request,'bodega.html',contexto)
+
+def enviar(request,idb):
+    if request.user.username == 'Bodeguero':
+        lproductos = boleta.objects.filter(nro_pedido=idb).order_by('nro_pedido','boleta')
+        cuenta = estadoc.objects.get(estado=3)
+        tip = estadoc
+        tip.estado = cuenta
+        for p in lproductos:
+            print(p.nro_pedido)
+            p.idEstado = cuenta
+            p.save()
+    return redirect('bodega')
+
+def confirmarpago(request,idb):
+    if request.user.username == 'Contador':
+        lproductos = boleta.objects.filter(nro_pedido=idb).order_by('nro_pedido','boleta')
+        cuenta = estadoc.objects.get(estado=2)
+        tip = estadoc
+        tip.estado = cuenta
+        for p in lproductos:
+            print(p.nro_pedido)
+            p.idEstado = cuenta
+            p.save()
+    return redirect('bodega')
+
 def registro(request):
     return render(request,'registro.html')
 
@@ -67,15 +103,15 @@ def pagoproducto(request):
 def pagar(request,idu):
     if request.user.id == idu:
         usuario = User
-        usuario.id = User.objects.get(id=idu)
+        usuario.id = User.objects.get(id=request.user.id)
         carro = carrito.objects.filter(idUsuario=usuario.id)
         npedido = 0
         try:
             totalc = sum(carro.values_list('total',flat=True))
-            pedido = boleta.objects.filter(idUsuario=usuario.id).latest('nro_pedido')
-            npedido = pedido.nro_pedido + 1
+            pedido = boleta.objects.all().latest('nro_pedido')
+            npedido = (pedido.nro_pedido + 1)
         except:
-            npedido = 1
+            npedido =  1
         for c in carro:
             boleta.objects.create(idProducto=c.idProducto,idUsuario=usuario.id,cantidad=c.cantidad,nro_pedido=npedido,precio=c.total)
         pedido = boleta.objects.filter(idUsuario=usuario.id).latest('boleta')
