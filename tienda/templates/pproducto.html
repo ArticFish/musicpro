@@ -23,7 +23,7 @@
 <div class="row">
     <h6>Stock disponible: {{ lista.stock }}</h6>
 </div>
-
+{% if lista.stock > 0%}
 <div class="row align-items-center">
     <form action="{% url 'agregarcarrito' lista.idProducto user.id %}" method="post" name="formulario" id="form1">
         {% csrf_token %}
@@ -38,6 +38,7 @@
         </button>
     </form>
 </div>
+{% endif %}
 <div class="row" style="margin-top: 5%;">
     <h5>Descripcion</h5>
     <hr>

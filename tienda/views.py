@@ -1,3 +1,4 @@
+from itertools import chain
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from .models import categoria, estadoc, producto,carrito,boleta
@@ -117,6 +118,11 @@ def pagar(request,idu):
         pedido = boleta.objects.filter(idUsuario=usuario.id).latest('boleta')
         pedido.total = totalc
         pedido.save()
+        productosc = boleta.objects.filter(nro_pedido=npedido)
+        for p in productosc:
+            stockproductos = producto.objects.get(idProducto=p.idProducto.idProducto)
+            stockproductos.stock = stockproductos.stock - p.cantidad
+            stockproductos.save()
         carro.delete()
     return redirect('pagoproducto')
     

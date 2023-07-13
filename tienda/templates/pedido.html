@@ -134,7 +134,7 @@
                                 </td>
                                 <td>
                                     <h5>{{ m.idEstado }}</h5>
-                                    {% if m.idEstado %}
+                                    {% if m.idEstado.nombreestado == 'Enviado' %}
                                         <a href="https://www.correos.cl/seguimiento-en-linea"><button class="btn btn-primary"><i class="fa fa-search"></i> Seguimiento</button></a>
                                     {% endif %}
                                 </td>
@@ -151,8 +151,6 @@
             {% endif %}
         </div>
     </div>
-    <button onclick="test()"></button>
-    <script src="{%static 'js/transacciones.js' %}"></script>
 </body>
 <div class="container-fluid">
     <footer style="text-align: center;"

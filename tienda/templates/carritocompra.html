@@ -87,7 +87,6 @@
             <div class="row producto">
                 <div class=" col-sm-4">
                     <img src="{{ m.idProducto.foto.url }}" height="50">
-                    {{ m.carrito }}
                     {{ m.idProducto.nombre }}
                 </div>
                 <div class=" col-sm-2">${{ m.idProducto.precio }}</div>
@@ -107,7 +106,13 @@
             <div class="col-sm-4" style="text-align: right">Total:</div>
             <div class="col-sm-4" style="text-align: left; margin-bottom: 2%;" id="total" name="{{ listad }}">{{ listat }}</div>
             <div class="row">
-                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <form method="post" name="formulario" id="form1">
+                        {% csrf_token %}
+                        <label><h6>Direccion de envio</h6></label>
+                        <input type="text" class="form-control " id="usuario" name="registrarUser" required>
+                    </form>
+                </div>
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">
                     <div id="paypal-button-container"></div>
