@@ -98,6 +98,7 @@
                             <th scope="col">Precio</th>
                             <th scope="col">Cantidad</th>
                             <th scope="col">Estado</th>
+                            <th scope="col">Direccion</th>
                         </tr>
                     </thead>
                     {% for m in lista %}
@@ -137,6 +138,9 @@
                                     {% if m.idEstado.nombreestado == 'Enviado' %}
                                         <a href="https://www.correos.cl/seguimiento-en-linea"><button class="btn btn-primary"><i class="fa fa-search"></i> Seguimiento</button></a>
                                     {% endif %}
+                                </td>
+                                <td>
+                                    <h5>{{ m.direccion }}</h5>
                                 </td>
                             </tr>
                         {% endif %}

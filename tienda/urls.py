@@ -33,7 +33,7 @@ urlpatterns = [
     path('pproductoe/<int:idp>',pproductoe,name='pproductoe'),
     path('eproducto/<int:idp>',eproducto,name='eproducto'),
     path('pproducto/<int:idp>',pproducto,name='pproducto'),
-    path('pagar/<int:idu>',pagar,name='pagar'),
+    path('pagar/<int:idu>/<str:dir>',pagar,name='pagar'),
     path('agregarcarrito/<int:idp>/<int:idu>',agregarcarrito,name='agregarcarrito'),
     path('quitarcarrito/<int:idp>/<int:idu>',quitarcarrito,name='quitarcarrito'),
 ]

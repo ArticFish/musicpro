@@ -101,7 +101,7 @@ def pagoproducto(request):
     contexto = {"lista":pag}
     return render(request,'pago.html',contexto)
 
-def pagar(request,idu):
+def pagar(request,idu,dir):
     if request.user.id == idu:
         usuario = User
         usuario.id = User.objects.get(id=request.user.id)
@@ -114,7 +114,7 @@ def pagar(request,idu):
         except:
             npedido =  1
         for c in carro:
-            boleta.objects.create(idProducto=c.idProducto,idUsuario=usuario.id,cantidad=c.cantidad,nro_pedido=npedido,precio=c.total)
+            boleta.objects.create(idProducto=c.idProducto,idUsuario=usuario.id,cantidad=c.cantidad,nro_pedido=npedido,precio=c.total,direccion=dir)
         pedido = boleta.objects.filter(idUsuario=usuario.id).latest('boleta')
         pedido.total = totalc
         pedido.save()

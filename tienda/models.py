@@ -49,6 +49,7 @@ class boleta(models.Model):
     precio = models.IntegerField(verbose_name="Precio producto",default=0)
     total = models.IntegerField(verbose_name="Total boleta",null=True,blank=True)
     nro_pedido = models.IntegerField(verbose_name="numero de pedido",default=1)
+    direccion = models.CharField(max_length=150, verbose_name="Color",blank=True,null=False)
     idProducto = models.ForeignKey(producto,on_delete=models.CASCADE)
     idUsuario = models.ForeignKey(User,on_delete=models.CASCADE)
     idEstado = models.ForeignKey(estadoc,on_delete=models.CASCADE,default=1)
